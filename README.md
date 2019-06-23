@@ -14,4 +14,4 @@ Dependences:
 
 Page source:
 
-Here the implementation of the taylor diagram developed by Yannick Copin (https://gist.github.com/ycopin) is used.
+ Taylor diagram implementation developed by Yannick Copin (https://gist.github.com/ycopin) is used.
