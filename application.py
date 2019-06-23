@@ -4,7 +4,8 @@
 Created on Mon May 28 10:16:04 2017
 @author: gag 
 
-
+Script that applies the models (MLR, MLP and MARS), previously trained, to a dataset and obtains
+the Taylor diagram for the comparison of the behavior of each one.
 
 """
 
