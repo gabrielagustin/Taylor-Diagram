@@ -16,16 +16,21 @@ import lectura
 
 from taylorDiagram import TaylorDiagram
 
-#v4
-def taylorGraph(v1, v2, v3):
-    # Reference dataset
-    data = v1 #SMAP
+
+def taylorGraph(y0, y1, y2, y3):
+    """ 
+        Generate taylor diagram
+        input: y0 reference dataset, y1...y3 aproximated dataset by models
+        output: plot
+    """
+    data = y0 #CONAE
     #print data
-    refstd = data.std(ddof=1)           # Reference standard deviation
+    refstd = data.std(ddof=1) # Reference standard deviation
 
     # Models
-    m1 = v2 # MLR
-    m2 = v3 # MLP
+    m1 = y1 # MLR
+    m2 = y2 # MLP
+    m3 = y3 # MARS
 
     # Compute stddev and correlation coefficient of models
     samples = np.array([ [m.std(ddof=1), np.corrcoef(data, m)[0,1]]
@@ -44,13 +49,10 @@ def taylorGraph(v1, v2, v3):
 
     colors = plt.matplotlib.cm.jet(np.linspace(0,1,len(samples)))
 
-    model = [ "MLR", "MLP"]
-    color = ["green", "blue"]
-    markers = ["s", "o"]
+    model = [ "MLR", "MLP", "MARS"]
+    color = ["green", "blue", "red" ]
+    markers = ["s", "o", "-"]
 
-    #model = [ "MLR", "MLP", "SMAP"]
-    #color = ["green", "blue", "red"]
-    #markers = ["s", "d", "o"]
 
     # Add samples to Taylor diagram
     for i,(stddev,corrcoef) in enumerate(samples):
@@ -66,12 +68,16 @@ def taylorGraph(v1, v2, v3):
                [ p.get_label() for p in dia.samplePoints ],
                numpoints=1, prop=dict(size='small'), loc='upper right')
 
-
     plt.show()
 
 
 
-def application(nameFile, MLRmodel, MLPmodel, type):
+def application(nameFile, MLRmodel, MLPmodel, MARSmodel):
+    """
+        Function that aplly models to data set
+        input: data set, trained models
+        output: plot
+    """
     if (type == "etapa1"):
         data = lectura.lecturaAplicacion(nameFile)
         data2 = lectura.lecturaAplicacionMLP(nameFile)
