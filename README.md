@@ -3,6 +3,12 @@ Mathematical diagrams to indicate which of several models is most realistic.
 
 
 
+<p align="center">
+  <img width=425 src="Taylorval.png"/>
+</p>
+
+
+
 Dependences:
 
     python - Sklearn
