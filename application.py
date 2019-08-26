@@ -19,11 +19,19 @@ from taylorDiagram import TaylorDiagram
 
 
 def taylorGraph(y0, y1, y2, y3):
-    """ 
-        Generate taylor diagram
-        input: y0 reference dataset, y1...y3 aproximated dataset by models
-        output: plot
+    """ Generate taylor diagram
+
+    Parameters:
+    -----------
+    y0 : reference dataset
+    y1...y3 : aproximated dataset by models
+
+    Returns: 
+    --------
+    taylor Graph plot
+
     """
+
     data = y0 #CONAE
     #print data
     refstd = data.std(ddof=1) # Reference standard deviation
@@ -74,11 +82,19 @@ def taylorGraph(y0, y1, y2, y3):
 
 
 def application(nameFile, MLRmodel, MLPmodel, MARSmodel):
+    """ Function that aplly models to data set
+
+    Parameters:
+    -----------
+    nameFile : String instances that contain file path
+    MLRmodel, MLPmodel, MARSmodel : trained models
+
+    Returns: 
+    --------
+    taylor Graph plot
+
     """
-        Function that aplly models to data set
-        input: data set, trained models
-        output: plot
-    """
+
     if (type == "etapa1"):
         data = lectura.lecturaAplicacion(nameFile)
         data2 = lectura.lecturaAplicacionMLP(nameFile)
